@@ -1,0 +1,23 @@
+<input type="text" id="user-input">
+<button id="check-btn">Check</button>
+<button id="clear-btn">Clear</button>
+<div id="results-div"></div>
+
+<script>
+  document.getElementById('check-btn').addEventListener('click', function() {
+    const userInput = document.getElementById('user-input').value;
+    const validUSNumber = /^(1\s?)?(\d{3}[-\s]\d{3}[-\s]\d{4}|\(\d{3}\)\s?\d{3}-\d{4}|\d{10})$/;
+
+    if (!userInput) {
+      alert('Please provide a phone number');
+    } else if (validUSNumber.test(userInput)) {
+      document.getElementById('results-div').innerText = `Valid US number: ${userInput}`;
+    } else {
+      document.getElementById('results-div').innerText = `Invalid US number: ${userInput}`;
+    }
+  });
+
+  document.getElementById('clear-btn').addEventListener('click', function() {
+    document.getElementById('results-div').innerHTML = '';
+  });
+</script>
